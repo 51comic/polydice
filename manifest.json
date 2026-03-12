@@ -1,0 +1,21 @@
+{
+  "name": "PolyDice - 桌游骰子替代应用",
+  "short_name": "PolyDice",
+  "description": "一个功能强大的桌游骰子替代应用，支持多种骰子类型和特殊规则",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f9f7f1",
+  "theme_color": "#3498db",
+  "icons": [
+    {
+      "src": "icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

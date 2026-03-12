@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#3498db">
+    <meta name="description" content="一个功能强大的桌游骰子替代应用，支持多种骰子类型和特殊规则">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icon-192x192.png" type="image/png">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
+    <title>PolyDice - 桌游骰子替代应用</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>PolyDice</h1>
+            <p>桌游骰子替代应用</p>
+        </header>
+
+        <main class="app-main">
+            <!-- 骰子选择区 -->
+            <section class="dice-selection">
+                <h2>选择骰子</h2>
+                <div class="dice-types">
+                    <div class="dice-type" data-sides="4">
+                        <div class="dice">d4</div>
+                        <div class="dice-controls">
+                            <button class="decrease">-</button>
+                            <span class="count">1</span>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                    <div class="dice-type" data-sides="6">
+                        <div class="dice">d6</div>
+                        <div class="dice-controls">
+                            <button class="decrease">-</button>
+                            <span class="count">1</span>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                    <div class="dice-type" data-sides="8">
+                        <div class="dice">d8</div>
+                        <div class="dice-controls">
+                            <button class="decrease">-</button>
+                            <span class="count">1</span>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                    <div class="dice-type" data-sides="10">
+                        <div class="dice">d10</div>
+                        <div class="dice-controls">
+                            <button class="decrease">-</button>
+                            <span class="count">1</span>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                    <div class="dice-type" data-sides="12">
+                        <div class="dice">d12</div>
+                        <div class="dice-controls">
+                            <button class="decrease">-</button>
+                            <span class="count">1</span>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                    <div class="dice-type" data-sides="20">
+                        <div class="dice">d20</div>
+                        <div class="dice-controls">
+                            <button class="decrease">-</button>
+                            <span class="count">1</span>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 投掷控制区 -->
+            <section class="roll-controls">
+                <button id="roll-button" class="roll-button">投掷骰子</button>
+                <div class="special-rules">
+                    <h3>特殊规则</h3>
+                    <div class="rule-item">
+                        <label>重投1点</label>
+                        <input type="checkbox" id="reroll-1">
+                    </div>
+                    <div class="rule-item">
+                        <label>加成/减值</label>
+                        <input type="number" id="modifier" value="0" min="-10" max="10">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 结果展示区 -->
+            <section class="result-display">
+                <h2>投掷结果</h2>
+                <div id="result-container" class="result-container"></div>
+                <div id="total-result" class="total-result"></div>
+            </section>
+
+            <!-- 历史记录区 -->
+            <section class="history-section">
+                <h2>历史记录</h2>
+                <div id="history-container" class="history-container"></div>
+                <button id="clear-history" class="clear-button">清空历史</button>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <p>© 2026 PolyDice - 桌游骰子替代应用</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // 注册service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then((registration) => {
+                        console.log('Service Worker 注册成功:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('Service Worker 注册失败:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

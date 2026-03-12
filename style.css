@@ -1,0 +1,443 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #2d5016;
+    background-image: 
+        linear-gradient(45deg, #2d5016 25%, #3a631d 25%, #3a631d 50%, #2d5016 50%, #2d5016 75%, #3a631d 75%, #3a631d 100%),
+        linear-gradient(45deg, #2d5016 25%, #3a631d 25%, #3a631d 50%, #2d5016 50%, #2d5016 75%, #3a631d 75%, #3a631d 100%);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.app-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f7f1;
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+/* 头部样式 */
+.app-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.app-header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.app-header p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+}
+
+/* 骰子选择区 */
+.dice-selection {
+    margin-bottom: 30px;
+}
+
+.dice-selection h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.dice-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+}
+
+.dice-type {
+    background-color: #ecf0f1;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.dice-type:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.dice {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 10px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* 不同骰子的形状和颜色 */
+.dice-type[data-sides="4"] .dice {
+    background-color: #8dd3c7; /* 马卡龙蓝绿色 */
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+.dice-type[data-sides="6"] .dice {
+    background-color: #fb8072; /* 马卡龙红色 */
+    border-radius: 8px;
+}
+
+.dice-type[data-sides="8"] .dice {
+    background-color: #80b1d3; /* 马卡龙蓝色 */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.dice-type[data-sides="10"] .dice {
+    background-color: #fdb462; /* 马卡龙橙色 */
+    clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 90% 65%, 65% 100%, 35% 100%, 10% 65%, 0% 35%, 20% 10%);
+}
+
+.dice-type[data-sides="12"] .dice {
+    background-color: #b3de69; /* 马卡龙绿色 */
+    clip-path: polygon(50% 0%, 80% 15%, 100% 50%, 80% 85%, 50% 100%, 20% 85%, 0% 50%, 20% 15%);
+}
+
+.dice-type[data-sides="20"] .dice {
+    background-color: #bebada; /* 马卡龙紫色 */
+    clip-path: polygon(50% 0%, 65% 20%, 85% 25%, 100% 45%, 90% 70%, 70% 85%, 50% 100%, 30% 85%, 10% 70%, 0% 45%, 15% 25%, 35% 20%);
+}
+
+.dice-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.dice-controls button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dice-controls button:hover {
+    background-color: #2980b9;
+}
+
+.dice-controls .count {
+    font-size: 1.2rem;
+    font-weight: bold;
+    min-width: 40px;
+}
+
+/* 投掷控制区 */
+.roll-controls {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.roll-button {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.roll-button:hover {
+    background-color: #229954;
+    transform: scale(1.05);
+}
+
+.special-rules {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.special-rules h3 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.rule-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.rule-item label {
+    font-size: 1rem;
+}
+
+.rule-item input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* 结果展示区 */
+.result-display {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.result-display h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.result-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    min-height: 100px;
+}
+
+.dice-result {
+    width: 60px;
+    height: 60px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    animation: roll 1s ease-out;
+}
+
+/* 不同骰子结果的形状和颜色 */
+.dice-result.d4 {
+    background-color: #8dd3c7; /* 马卡龙蓝绿色 */
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+.dice-result.d6 {
+    background-color: #fb8072; /* 马卡龙红色 */
+    border-radius: 8px;
+}
+
+.dice-result.d8 {
+    background-color: #80b1d3; /* 马卡龙蓝色 */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.dice-result.d10 {
+    background-color: #fdb462; /* 马卡龙橙色 */
+    clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 90% 65%, 65% 100%, 35% 100%, 10% 65%, 0% 35%, 20% 10%);
+}
+
+.dice-result.d12 {
+    background-color: #b3de69; /* 马卡龙绿色 */
+    clip-path: polygon(50% 0%, 80% 15%, 100% 50%, 80% 85%, 50% 100%, 20% 85%, 0% 50%, 20% 15%);
+}
+
+.dice-result.d20 {
+    background-color: #bebada; /* 马卡龙紫色 */
+    clip-path: polygon(50% 0%, 65% 20%, 85% 25%, 100% 45%, 90% 70%, 70% 85%, 50% 100%, 30% 85%, 10% 70%, 0% 45%, 15% 25%, 35% 20%);
+}
+
+.dice-result.critical {
+    animation: critical 1s ease-out;
+}
+
+.dice-result.success {
+    box-shadow: 0 0 15px rgba(39, 174, 96, 0.7);
+}
+
+/* 为6和9添加区分短线 */
+.dice-result .dot {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 2px;
+    background-color: white;
+    border-radius: 1px;
+}
+
+/* 确保骰子结果元素有相对定位，使短线位置正确 */
+.dice-result {
+    position: relative;
+}
+
+.total-result {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-top: 10px;
+}
+
+/* 历史记录区 */
+.history-section {
+    margin-bottom: 30px;
+}
+
+.history-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.history-container {
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.history-item {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.history-item .roll-info {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.history-item .roll-results {
+    color: #7f8c8d;
+}
+
+.clear-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.clear-button:hover {
+    background-color: #c0392b;
+}
+
+/* 页脚样式 */
+.app-footer {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+/* 动画效果 */
+@keyframes roll {
+    0% {
+        transform: rotate(0deg) scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: rotate(180deg) scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes critical {
+    0% {
+        transform: rotate(0deg) scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: rotate(180deg) scale(1.5);
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+        opacity: 1;
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+    .app-container {
+        padding: 15px;
+    }
+
+    .app-header h1 {
+        font-size: 2rem;
+    }
+
+    .dice-types {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .dice-type {
+        padding: 10px;
+    }
+
+    .dice {
+        font-size: 1.2rem;
+    }
+
+    .roll-button {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+
+    .dice-result {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .dice-types {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .app-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .roll-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
